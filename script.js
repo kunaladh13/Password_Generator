@@ -1,17 +1,17 @@
 // Getting the DOM Eleements
-const pLength = document.getElementById("length");
+const passwordLength = document.getElementById("length");
 const upperCase = document.getElementById("uppercase");
 const lowerCase = document.getElementById("lowercase");
-const pNumber = document.getElementById("number");
-const pSymbol = document.getElementById("symbol");
+const passwordNumber = document.getElementById("number");
+const passwordSymbol = document.getElementById("symbol");
 const submit = document.getElementById("submit");
 const password = document.getElementById("password");
 
 // Generating Character Codes
 
 const empty = "";
-const uCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lCase = "abcdefghijklmnopqrstuvwxyz";
+const upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowCase = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const symbol = "!@#$%^&*=-_";
 
@@ -19,13 +19,12 @@ const symbol = "!@#$%^&*=-_";
 
 submit.addEventListener("click", () => {
     let initialPassword = empty;
-    (upperCase.checked) ? initialPassword += uCase : "";
-    (lowerCase.checked) ? initialPassword += lCase : "";
-    (pNumber.checked) ? initialPassword += number : "";
-    (pSymbol.checked) ? initialPassword += symbol : "";
+    (upperCase.checked) ? initialPassword += upCase : "";
+    (lowerCase.checked) ? initialPassword += lowCase : "";
+    (passwordNumber.checked) ? initialPassword += number : "";
+    (passwordSymbol.checked) ? initialPassword += symbol : "";
 
-    password.value = generatePassword(pLength.value, initialPassword)
-});
+    password.value = generatePassword(passwordLength.value, initialPassword)});
 
 function generatePassword(l, initialPassword) {
     let pass = "";
@@ -35,7 +34,7 @@ function generatePassword(l, initialPassword) {
     return pass;
 }
 
-// Copy password to clipboard
+// Copy password to clipboardassword
 
 const copy = document.getElementById("copy");
 
@@ -44,7 +43,6 @@ copy.addEventListener("click", () => {
         alert("Please generate a password")
     }else {
         password.select();
-        document.execCommand("copy");
         alert("Password has been copied to clipboard");
     }
 });
